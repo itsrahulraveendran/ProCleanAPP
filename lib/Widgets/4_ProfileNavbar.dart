@@ -122,6 +122,7 @@ class ProfileScreen extends StatelessWidget {
                 '2023-09-25',
                 12,
                 0),
+
             const SizedBox(height: 20),
 
             // Recent Activity

@@ -2,9 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+final formkey = GlobalKey<FormState>();
+TextEditingController nameController = TextEditingController();
+TextEditingController emailController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
+
+class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +34,6 @@ class SignUpPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
-
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -45,6 +54,13 @@ class SignUpPage extends StatelessWidget {
                 height: 0,
               ),
               TextFormField(
+                controller: nameController,
+                validator: (nameValue) {
+                  if (nameValue == null || nameValue.isEmpty) {
+                    return "Enter the name";
+                  }
+                  return null;
+                },
                 decoration: InputDecoration(
                   hintText: 'Name',
                   border: OutlineInputBorder(
@@ -117,7 +133,16 @@ class SignUpPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(5)),
                         fixedSize: Size(350, 40),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        if (formkey.currentState!.validate(){
+                          UserModel user = UserModel(
+                          fullName: nameController.text,
+                          );
+                          Firebase
+
+
+                        });
+                      },
                       child: Text(
                         "Sign Up",
                         style: TextStyle(color: Colors.white),

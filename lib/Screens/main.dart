@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:proclean_app/Screens/Page10_Search.dart';
 import 'package:proclean_app/Screens/Page8_HomePage.dart';
@@ -6,6 +7,7 @@ import 'package:proclean_app/Screens/page2_WelcomePage.dart';
 
 
 import '../Screenvendor/page1_vendorUpload.dart';
+import '../firebase_options.dart';
 import 'Page3_loginPage.dart';
 import 'Page4_SignUp.dart';
 import 'Page5_OtpVerification.dart';
@@ -14,7 +16,11 @@ import 'Page7_OtpSucces.dart';
 import 'NavBAR.dart';
 
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
