@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:proclean_app/model/user_model.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -11,7 +13,7 @@ class SignUpPage extends StatefulWidget {
 
 final formkey = GlobalKey<FormState>();
 TextEditingController nameController = TextEditingController();
-TextEditingController emailController = TextEditingController();
+TextEditingController eMailController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
 
 class _SignUpPageState extends State<SignUpPage> {
@@ -134,14 +136,14 @@ class _SignUpPageState extends State<SignUpPage> {
                         fixedSize: Size(350, 40),
                       ),
                       onPressed: () {
-                        if (formkey.currentState!.validate(){
+                        if (formkey.currentState!.validate()) {
                           UserModel user = UserModel(
-                          fullName: nameController.text,
-                          );
-                          Firebase
+                              fullName: nameController.text,
+                              eMail: eMailController.text,
+                              password: passwordController.text);
+                          FirebaseAuth.instance.createUserWithEmailAndPassword(email: eMailController.text, password: passwordController.text);
 
-
-                        });
+                        }
                       },
                       child: Text(
                         "Sign Up",
