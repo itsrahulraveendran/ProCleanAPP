@@ -7,9 +7,15 @@ class ProductOrder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Map<String, String>> reviews = [
+      {"name": "Emily", "review": "This vacuum cleaner is amazing!"},
+      {"name": "John", "review": "Works well, but the battery life could be better."},
+      {"name": "Sophia", "review": "Great suction power, worth the price!"}
+    ];
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Prodct Details'),
+        title: Text('Product Details'),
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -40,15 +46,16 @@ class ProductOrder extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
                   SizedBox(height: 50,),
                   Text(
-                    "Vaccm Cleaner",
+                    "Vacuum Cleaner",
                     style: TextStyle(fontSize: 18),
-                  ),SizedBox(height: 10,),
+                  ),
+                  SizedBox(height: 10,),
                   Row(
                     children: [
-                      Text("RATING"), Row(
+                      Text("RATING"),
+                      Row(
                         children: [
                           Icon(Icons.star, color: Colors.yellow[700], size: 20),
                           Icon(Icons.star, color: Colors.yellow[700], size: 20),
@@ -62,25 +69,34 @@ class ProductOrder extends StatelessWidget {
                         ],
                       ),
                     ],
-                  ),SizedBox(height: 10,),
+                  ),
+                  SizedBox(height: 10,),
                   Text(
                     "Price",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),SizedBox(height: 10,),
+                  ),
+                  SizedBox(height: 10,),
                   Text(
                     "\$400",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
-                  ),SizedBox(height: 10,),
+                  ),
+                  SizedBox(height: 10,),
                   Row(
-                    children: [Text("QTY"),SizedBox(width: 100,),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.remove),
-                      ),
-                      Text('1'),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.add),
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("QTY"),
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.remove),
+                          ),
+                          Text('1'),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.add),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -90,18 +106,17 @@ class ProductOrder extends StatelessWidget {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "he Dyson V11 Torque Drive Cordless Vacuum Cleaner offers powerful suction and up to 60 minutes of run time. It features an advanced whole-machine filtration system that captures 99",
+                    "The Dyson V11 Torque Drive Cordless Vacuum Cleaner offers powerful suction and up to 60 minutes of run time. It features an advanced whole-machine filtration system that captures 99%.",
                     style: TextStyle(fontSize: 14,),
-
                   ),
                   SizedBox(height: 20,),
-                  Text('CustomerReview'),
-
+                  Text('Customer Reviews'),
                   SizedBox(height: 20,),
-                  _buildCustomerReview(context, "Emily", 'This vacuum cleaner is amazing!'),
-                  _buildCustomerReview(context, "Emily", 'This vacuum cleaner is amazing!'),
-                  _buildCustomerReview(context, "Emily", 'This vacuum cleaner is amazing!'),
-
+                  Column(
+                    children: reviews.map((reviewData) {
+                      return _buildCustomerReview(context, reviewData["name"]!, reviewData["review"]!);
+                    }).toList(),
+                  ),
                 ],
               ),
             ),
@@ -111,12 +126,7 @@ class ProductOrder extends StatelessWidget {
     );
   }
 
-
-
-
-
-  Widget _buildCustomerReview(
-      BuildContext context, String name, String review) {
+  Widget _buildCustomerReview(BuildContext context, String name, String review) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Column(
@@ -131,24 +141,18 @@ class ProductOrder extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(name, style: Theme.of(context).textTheme.subtitle2),
+                    Text(name, style: Theme.of(context).textTheme.titleMedium), // or bodyText2
                     const SizedBox(height: 4),
                     Text(review),
                   ],
-          
-                ),
-          
-              ),
 
-              
+                ),
+              ),
             ],
           ),
           SizedBox(height: 15,),
         ],
-
       ),
-
     );
   }
-
 }

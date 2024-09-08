@@ -41,49 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDEsGbSX6bGYVrCA8IE9crvhrfEYsKOIHI',
-    appId: '1:331505603027:web:14aba739973e52867bdf26',
-    messagingSenderId: '331505603027',
-    projectId: 'procleanapp-24a18',
-    authDomain: 'procleanapp-24a18.firebaseapp.com',
-    storageBucket: 'procleanapp-24a18.appspot.com',
-    measurementId: 'G-FC6MDP0XY6',
+    apiKey: 'AIzaSyCZl0kNrQqtolDfldZP-6nggk-xWFVHBgY',
+    appId: '1:851435752451:web:8d7aaa92283a5222be1236',
+    messagingSenderId: '851435752451',
+    projectId: 'pro-clean-app',
+    authDomain: 'pro-clean-app.firebaseapp.com',
+    storageBucket: 'pro-clean-app.appspot.com',
+    measurementId: 'G-EMQLDPHQBP',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD0Zd-z49-jsMtmHhZi76PfwQPs-patQs8',
-    appId: '1:331505603027:android:b11056ae1bb0bd837bdf26',
-    messagingSenderId: '331505603027',
-    projectId: 'procleanapp-24a18',
-    storageBucket: 'procleanapp-24a18.appspot.com',
+    apiKey: 'AIzaSyA87uPIa9q49fLRcxL5DkdsMarnizZfGd8',
+    appId: '1:851435752451:android:d9fc50ba35486f5dbe1236',
+    messagingSenderId: '851435752451',
+    projectId: 'pro-clean-app',
+    storageBucket: 'pro-clean-app.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDGuTyInBnw3HV0KDaHFXrc0sMX3y1ayl0',
-    appId: '1:331505603027:ios:51b243d91557ceb77bdf26',
-    messagingSenderId: '331505603027',
-    projectId: 'procleanapp-24a18',
-    storageBucket: 'procleanapp-24a18.appspot.com',
+    apiKey: 'AIzaSyBj9D1lcl-5D0L46J7Jj2N1ByFjO80Ai6k',
+    appId: '1:851435752451:ios:da7ff1ad053d6101be1236',
+    messagingSenderId: '851435752451',
+    projectId: 'pro-clean-app',
+    storageBucket: 'pro-clean-app.appspot.com',
     iosBundleId: 'com.example.procleanApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDGuTyInBnw3HV0KDaHFXrc0sMX3y1ayl0',
-    appId: '1:331505603027:ios:51b243d91557ceb77bdf26',
-    messagingSenderId: '331505603027',
-    projectId: 'procleanapp-24a18',
-    storageBucket: 'procleanapp-24a18.appspot.com',
+    apiKey: 'AIzaSyBj9D1lcl-5D0L46J7Jj2N1ByFjO80Ai6k',
+    appId: '1:851435752451:ios:da7ff1ad053d6101be1236',
+    messagingSenderId: '851435752451',
+    projectId: 'pro-clean-app',
+    storageBucket: 'pro-clean-app.appspot.com',
     iosBundleId: 'com.example.procleanApp',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyDEsGbSX6bGYVrCA8IE9crvhrfEYsKOIHI',
-    appId: '1:331505603027:web:417704c1c5d030337bdf26',
-    messagingSenderId: '331505603027',
-    projectId: 'procleanapp-24a18',
-    authDomain: 'procleanapp-24a18.firebaseapp.com',
-    storageBucket: 'procleanapp-24a18.appspot.com',
-    measurementId: 'G-1F42MN7TL4',
+    apiKey: 'AIzaSyCZl0kNrQqtolDfldZP-6nggk-xWFVHBgY',
+    appId: '1:851435752451:web:a728921fc83f3f10be1236',
+    messagingSenderId: '851435752451',
+    projectId: 'pro-clean-app',
+    authDomain: 'pro-clean-app.firebaseapp.com',
+    storageBucket: 'pro-clean-app.appspot.com',
+    measurementId: 'G-FHWHL4LEK9',
   );
 
 }

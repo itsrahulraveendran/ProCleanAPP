@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "331505603027",
-    "project_id": "procleanapp-24a18",
-    "storage_bucket": "procleanapp-24a18.appspot.com"
+    "project_number": "851435752451",
+    "project_id": "pro-clean-app",
+    "storage_bucket": "pro-clean-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:331505603027:android:b11056ae1bb0bd837bdf26",
+        "mobilesdk_app_id": "1:851435752451:android:d9fc50ba35486f5dbe1236",
         "android_client_info": {
           "package_name": "com.example.proclean_app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD0Zd-z49-jsMtmHhZi76PfwQPs-patQs8"
+          "current_key": "AIzaSyA87uPIa9q49fLRcxL5DkdsMarnizZfGd8"
         }
       ],
       "services": {

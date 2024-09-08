@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../Screens/Page14_ProdctOpenPage.dart';
+import '../image_Store/ui_image_upload.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -10,7 +11,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Dashboard'),
-        automaticallyImplyLeading: false,//to remove backbutton
+        automaticallyImplyLeading: false, //to remove backbutton
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
@@ -29,7 +30,8 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 40,
-                    backgroundImage: AssetImage('assets/images/CategoryImages/officeCleaning.png'),
+                    backgroundImage: AssetImage(
+                        'assets/images/CategoryImages/officeCleaning.png'),
                   ),
                   const SizedBox(height: 10),
                   const Text(
@@ -52,17 +54,29 @@ class ProfileScreen extends StatelessWidget {
                 _buildQuickAction(Icons.add, 'Book a Service'),
                 _buildQuickAction(Icons.history, 'View Past Services'),
                 _buildQuickAction(Icons.star, 'Rate a Cleaner'),
+                IconButton(
+                  icon: const Icon(Icons.add),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AddItem()));
+                  },
+                ),
               ],
             ),
             const SizedBox(height: 20),
 
-
             Row(
               children: [
-                _buildSpecialOfferCard('Discount 20%', 'Get 20% off on your next service',
+                _buildSpecialOfferCard(
+                    'Discount 20%',
+                    'Get 20% off on your next service',
                     'assets/images/CategoryImages/cawash.png'),
                 const SizedBox(width: 10),
-                _buildSpecialOfferCard('Holiday Pack', 'Special holiday cleaning package',
+                _buildSpecialOfferCard(
+                    'Holiday Pack',
+                    'Special holiday cleaning package',
                     'assets/images/CategoryImages/ecocarwash.png'),
               ],
             ),
@@ -82,14 +96,30 @@ class ProfileScreen extends StatelessWidget {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-
-                  _buildServiceCard('Home Cleaning', 'Regular home cleaning services', 'assets/images/CategoryImages/officeCleaning.png', context, ProductOrder()),
-                  _buildServiceCard('Office Cleaning',
-                      'Professional office cleaning', 'assets/images/CategoryImages/officeCleaning.png', context, ProductOrder()),
-                  _buildServiceCard('Deep Cleaning', 'Thorough deep cleaning',
-                      'assets/images/CategoryImages/officeCleaning.png', context, ProductOrder()),
-                  _buildServiceCard("ABC", "subtitle", 'assets/images/CategoryImages/officeCleaning.png', context, ProductOrder())
-
+                  _buildServiceCard(
+                      'Home Cleaning',
+                      'Regular home cleaning services',
+                      'assets/images/CategoryImages/officeCleaning.png',
+                      context,
+                      ProductOrder()),
+                  _buildServiceCard(
+                      'Office Cleaning',
+                      'Professional office cleaning',
+                      'assets/images/CategoryImages/officeCleaning.png',
+                      context,
+                      ProductOrder()),
+                  _buildServiceCard(
+                      'Deep Cleaning',
+                      'Thorough deep cleaning',
+                      'assets/images/CategoryImages/officeCleaning.png',
+                      context,
+                      ProductOrder()),
+                  _buildServiceCard(
+                      "ABC",
+                      "subtitle",
+                      'assets/images/CategoryImages/officeCleaning.png',
+                      context,
+                      ProductOrder())
                 ],
               ),
             ),
@@ -136,14 +166,13 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 10),
             const Text(
               'You booked a home cleaning service on Oct 10. '
-                  'You rated a cleaner on Sep 20. '
-                  'You canceled a booking on Sep 25. '
-                  'You made a payment on Sep 30.',
+              'You rated a cleaner on Sep 20. '
+              'You canceled a booking on Sep 25. '
+              'You made a payment on Sep 30.',
             ),
           ],
         ),
       ),
-
     );
   }
 
@@ -167,7 +196,8 @@ class ProfileScreen extends StatelessWidget {
       elevation: 4,
       margin: const EdgeInsets.symmetric(vertical: 10),
       child: ListTile(
-        leading: Image.asset(imagePath, width: 60, height: 60, fit: BoxFit.cover),
+        leading:
+            Image.asset(imagePath, width: 60, height: 60, fit: BoxFit.cover),
         title: Text(title),
         subtitle: Text(subtitle),
       ),
@@ -175,7 +205,8 @@ class ProfileScreen extends StatelessWidget {
   }
 
   // Helper method to build special offer cards
-  Widget _buildSpecialOfferCard(String title, String subtitle, String imagePath) {
+  Widget _buildSpecialOfferCard(
+      String title, String subtitle, String imagePath) {
     return Expanded(
       child: Card(
         elevation: 4,
@@ -203,9 +234,13 @@ class ProfileScreen extends StatelessWidget {
   }
 
   // Helper method to build service cards
-  Widget _buildServiceCard(String title, String subtitle, String imagePath,BuildContext context,Widget pageNavigation) {
+  Widget _buildServiceCard(String title, String subtitle, String imagePath,
+      BuildContext context, Widget pageNavigation) {
     return InkWell(
-      onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>pageNavigation));},
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => pageNavigation));
+      },
       child: SizedBox(
         width: 160,
         child: Card(
