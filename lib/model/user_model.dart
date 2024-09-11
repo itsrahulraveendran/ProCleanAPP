@@ -1,20 +1,20 @@
 class UserModel {
-  String fullName;
+  String ZZfullName;
   String eMail;
   String password;
 
   UserModel(
-      {required this.fullName, required this.eMail, required this.password});
+      {required this.ZZfullName, required this.eMail, required this.password});
 
   factory UserModel.fromMAp(Map<String, dynamic> map) {
     return UserModel(
-        fullName: map['fullname'],
+        ZZfullName: map['fullname'],
         eMail: map['eMail'],
         password: map['password']);
   }
 
   Map<String, dynamic> toMap() {
-    return {'fullName': fullName,
+    return {'fullName': ZZfullName,
       'eMail': eMail,
       'password': password,
     };

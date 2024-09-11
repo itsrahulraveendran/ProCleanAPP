@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:proclean_app/Screens/Page7_OtpSucces.dart';
+import 'package:proclean_app/Screens/login_signin/Page6_OtpEnter.dart';
 
-class OtpEnter extends StatelessWidget {
-  const OtpEnter({super.key});
+class OtpVerification extends StatelessWidget {
+  const OtpVerification({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,31 +22,26 @@ class OtpEnter extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
 
             children: [
-              SizedBox(height: 70,),
 
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                    alignment: Alignment.centerLeft,
-                   child: const Text(
-
-                  "Verification Code",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
+                  alignment: Alignment.center,
+                  child: Image.asset('assets/images/Secure.png',width: 200,height: 200,fit: BoxFit.fill,)
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  alignment: Alignment.centerLeft,
-                  child: const Text(
+                  alignment: Alignment.center,
+                  child: Text(
 
-                    "We have sent the verification code to your Mobile Number",
-                    style: TextStyle(fontSize: 12, color: Colors.grey),
+                    "Secure your access with a quick OTP",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
-              const SizedBox(
+              SizedBox(
                 height: 20,
               ),
 
@@ -58,11 +53,11 @@ class OtpEnter extends StatelessWidget {
                   children: [
                     TextFormField(
                       decoration: InputDecoration(
-                          hintText: "Enter OTP",
+                          hintText: "Mobile Number",
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 20,
                     ),
 
@@ -73,9 +68,9 @@ class OtpEnter extends StatelessWidget {
                               borderRadius: BorderRadius.circular(5)),
                           fixedSize: Size(350, 40),
                         ),
-                        onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>const OtpSucces()));},
-                        child: const Text(
-                          "Confirm",
+                        onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>const OtpEnter()));},
+                        child: Text(
+                          "Send OTP",
                           style: TextStyle(color: Colors.white),
                         )),
 
@@ -87,6 +82,7 @@ class OtpEnter extends StatelessWidget {
             ],
           ),
         ),
-      ),);
+      ),
+    );
   }
 }

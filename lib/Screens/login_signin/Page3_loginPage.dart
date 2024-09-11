@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:proclean_app/Screens/Page4_SignUp.dart';
-import 'package:proclean_app/Screens/Page5_OtpVerification.dart';
+import 'package:proclean_app/Screens/login_signin/Page4_SignUp.dart';
+import 'package:proclean_app/Screens/login_signin/Page5_OtpVerification.dart';
 import 'package:proclean_app/Screens/Page8_HomePage.dart';
 
-import 'NavBAR.dart';
+import '../NavBAR.dart';
+
+
+
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

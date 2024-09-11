@@ -150,7 +150,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
                             UserModel user = UserModel(
-                                fullName: nameController.text,
+                                ZZfullName: nameController.text,
                                 eMail: eMailController.text,
                                 password: passwordController.text);
                             FirebaseAuth.instance

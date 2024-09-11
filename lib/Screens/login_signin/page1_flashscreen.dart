@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:proclean_app/Screens/page2_WelcomePage.dart';
+import 'package:proclean_app/Screens/login_signin/page2_WelcomePage.dart';
+
 
 class procleanFlash extends StatefulWidget {
   const procleanFlash({super.key});

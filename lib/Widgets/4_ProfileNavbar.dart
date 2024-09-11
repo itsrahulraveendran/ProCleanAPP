@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:proclean_app/image_Store/Shopping_list.dart';
+import 'package:proclean_app/image_Store/image_upload_check.dart';
 
 import '../Screens/Page14_ProdctOpenPage.dart';
+import '../image_Store/datafrom_firestore.dart';
 import '../image_Store/ui_image_upload.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -47,6 +50,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
+
             // Quick Actions
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -60,10 +64,30 @@ class ProfileScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const AddItem()));
+                            builder: (context) => const Image_upload()));
                   },
                 ),
+
               ],
+            ),
+            IconButton(
+              icon: const Icon(Icons.data_exploration),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const dataFromFireStore()));
+              },
+            ),
+
+            IconButton(
+              icon: const Icon(Icons.image),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const dataFromSHOPPINGFIREBASE()));
+              },
             ),
             const SizedBox(height: 20),
 

@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
-class AddItem extends StatefulWidget {
-  const AddItem({super.key});
+class Image_upload extends StatefulWidget {
+  const Image_upload({super.key});
 
   @override
-  State<AddItem> createState() => _AddItemState();
+  State<Image_upload> createState() => _Image_uploadState();
 }
 
-class _AddItemState extends State<AddItem> {
+class _Image_uploadState extends State<Image_upload> {
   TextEditingController _controllerName = TextEditingController();
   TextEditingController _controllerQuantity = TextEditingController();
 
@@ -24,27 +24,6 @@ class _AddItemState extends State<AddItem> {
   FirebaseFirestore.instance.collection('shopping_list');
 
   String _imageURL = '';
-
-  // // Initialize FirebaseAuth instance
-  // FirebaseAuth auth = FirebaseAuth.instance;
-  //
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   // Sign in anonymously when the app starts
-  //   signInAnonymously();
-  // }
-  //
-  // // Function to sign in anonymously
-  // void signInAnonymously() async {
-  //   try {
-  //     UserCredential userCredential = await auth.signInAnonymously();
-  //     print('Signed in anonymously as: ${userCredential.user!.uid}');
-  //   } catch (e) {
-  //     print('Error during anonymous sign-in: $e');
-  //   }
-  // }
-
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +50,7 @@ class _AddItemState extends State<AddItem> {
                 ),
               ),
               SizedBox(height: 15),
+              Text("image"),
               TextFormField(
                 controller: _controllerQuantity,
                 validator: (String? value) {
@@ -86,80 +66,78 @@ class _AddItemState extends State<AddItem> {
               SizedBox(height: 15),
               IconButton(
                 onPressed: () async {
-                  // var user = FirebaseAuth.instance.currentUser;
-                  // if (user == null) {
-                  //   ScaffoldMessenger.of(context).showSnackBar(
-                  //       SnackBar(content: Text('Please sign in before uploading an image')));
-                  //   return;
-                  // }
-
                   User? user = FirebaseAuth.instance.currentUser;
 
-                  // Check if user is not null (i.e., user is signed in)
                   if (user == null) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Please sign in before uploading an image')));
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text('Please sign in before uploading an image')));
                     return;
                   }
 
                   ImagePicker _imagePicker = ImagePicker();
+                  XFile? file =
+                  await _imagePicker.pickImage(source: ImageSource.gallery);
 
-                  // Properly await the image picker operation
-                  XFile? _file = await _imagePicker.pickImage(source: ImageSource.gallery);
+                  if (file == null) return;
 
-                  // Check if the image was picked
-                  if (_file == null) return;
-
-                  // Create a unique name for the file
                   String _uniqueFileName =
                   DateTime.now().millisecondsSinceEpoch.toString();
 
-                  // Get a reference to Firebase Storage
-                  Reference _referenceRoot = FirebaseStorage.instance.ref();
-                  Reference _referenceDirImages =
-                  _referenceRoot.child('images/${user.uid}');
-                  log('image saved');
-
-                  // Reference for uploading the image
-                  Reference _referenceImageUpload =
-                  _referenceDirImages.child(_uniqueFileName);
-
                   try {
-                    // Upload the file
-                    await _referenceImageUpload.putFile(File(_file.path));
-                    // Get the download URL
+                    Reference _referenceDirImages =
+                    FirebaseStorage.instance.ref().child('images/${user.uid}');
+                    Reference _referenceImageUpload =
+                    _referenceDirImages.child('$_uniqueFileName.jpg');
+
+                    // Upload file
+                    await _referenceImageUpload.putFile(File(file.path));
+
+                    // Get download URL
                     _imageURL = await _referenceImageUpload.getDownloadURL();
+                    log("Image uploaded: $_imageURL");
                   } catch (error) {
-                    print('Error uploading image: $error');
+                    log('Error uploading image: $error');
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Error uploading image')));
                   }
                 },
                 icon: Icon(Icons.camera_alt_outlined),
               ),
               ElevatedButton(
                 onPressed: () async {
-                  if (_imageURL.isEmpty) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Please upload an image')));
-                    return;
-                  }
+                  // if (_imageURL.isEmpty) {
+                  //   ScaffoldMessenger.of(context).showSnackBar(
+                  //       SnackBar(content: Text('Please upload an image')));
+                  //   return;
+                  // }
 
                   if (key.currentState!.validate()) {
                     String itemName = _controllerName.text;
                     String itemQuantity = _controllerQuantity.text;
 
-                    // Create a Map of data to send
                     Map<String, String> dataToSend = {
                       'name': itemName,
                       'quantity': itemQuantity,
                       'image': _imageURL,
                     };
 
-                    // Add the new item
-                    _reference.add(dataToSend);
+                    try {
+                      await _reference.add(dataToSend);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("Product added successfully!")));
+
+                      _controllerName.clear();
+                      _controllerQuantity.clear();
+                      _imageURL = '';
+                    } catch (e) {
+                      log("Error adding item: $e");
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("Error adding item")));
+                    }
                   }
                 },
                 child: Text('Submit'),
-              )
+              ),
             ],
           ),
         ),

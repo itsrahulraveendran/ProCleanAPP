@@ -67,7 +67,9 @@ flutter:
 
 
   assets:
+
     - assets/images/
+    - assets/userprofile.png
     - assets/images/CategoryImages/
 
 
